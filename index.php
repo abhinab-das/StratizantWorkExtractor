@@ -45,7 +45,7 @@ function getData($worklogauthor) {
   $edate = '2018-11-26';
 
   $ch = curl_init();
-  $url = $cfg['jira_host_address'] . "/rest/api/2/search?jql=worklogAuthor=".$worklogauthor."%20AND%20worklogDate%3C2018-12-01%20AND%20worklogDate%3E2018-11-26%20ORDER%20BY%20assignee%20ASC%20%2Cproject%20ASC";
+  $url = $cfg['jira_host_address'] . "/rest/api/2/search?jql=worklogAuthor=".$worklogauthor."%20AND%20worklogDate%3CendOfWeek()%20AND%20worklogDate%3EstartOfWeek()%20ORDER%20BY%20assignee%20ASC%20%2Cproject%20ASC";
   //echo($url);
   curl_setopt($ch, CURLOPT_URL, $url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
